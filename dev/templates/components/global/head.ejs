@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>       <html class="lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>          <html class="lt-ie9 lt-ie8 ie7">    <![endif]-->
+<!--[if IE 8]>          <html class="lt-ie9 ie8">           <![endif]-->
+<!--[if IE 9]>          <html class="ie9">                  <![endif]-->
+<!--[if gt IE 9]><!-->  <html>                              <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <!-- hide address bar on ios -->
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+
+  <title><%= meta.title %></title>
+  <meta name="description" content="<%= meta.description %>">
+  <meta name="keywords" content="<%= meta.keywords %>" >
+
+  <!-- facebook open graph -->
+  <meta property="og:title" content="<%= meta.facebook.og_title %>">
+  <meta property="og:type" content="<%= meta.facebook.og_type %>">
+  <meta property="og:url" content="<%= meta.facebook.og_url %>">
+  <meta property="og:image" content="<%= meta.facebook.og_image %>">
+  <meta property="og:site_name" content="<%= meta.facebook.og_site_name %>">
+  <meta property="og:fb:app_id" content="<%= meta.facebook.og_app_id %>">
+  <meta property="og:description" content="<%= meta.facebook.og_description %>">
+  <!-- end facebook open graph -->
+
+  <!-- twitter card -->
+  <meta name="twitter:card" content="<%= meta.twitter.card_type %>">
+  <meta name="twitter:site" content="<%= meta.twitter.site %>">
+  <meta name="twitter:creator" content="<%= meta.twitter.creator %>">
+  <meta name="twitter:url" content="<%= meta.twitter.url %>">
+  <meta name="twitter:title" content="<%= meta.twitter.title %>">
+  <meta name="twitter:description" content="<%= meta.twitter.description %>">
+  <meta name="twitter:image" content="<%= meta.twitter.image %>">
+  <!-- end twitter card -->
+
+  <!-- favicons -->
+  <link rel="icon" href="/img/global/favicons/favicon.ico">
+  <link rel="apple-touch-icon" href="/img/global/favicons/apple-touch-icon-precomposed.png">
+  <!-- end favicons -->
+
+  <!-- css -->
+  <!-- build:css /css/main.css -->
+
+  <!-- vendor -->
+
+  <!-- end vendor -->
+
+  <!-- site -->
+
+  <!-- global -->
+
+  <!-- end global -->
+
+  <!-- pages -->
+
+  <!-- home -->
+
+  <!-- end home -->
+
+  <!-- end pages -->
+
+  <!-- end site -->
+
+  <!-- responsive -->
+  <link rel="stylesheet" href="/css/responsive/retina_display.css">
+  <!-- end responsive -->
+
+  <!-- endbuild -->
+  <!-- end css -->
+
+  <!-- feature detect with modernizr -->
+  <script src="/js/vendor/modernizr.custom.js"></script>
+  <!-- end feature detect with modernizr -->
+
+  <!-- google analytics -->
+  <script>
+    var _gaq=[['_setAccount','<%= global.google_analytics %>'],['_trackPageview']];
+    (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+    g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+    s.parentNode.insertBefore(g,s)}(document,'script'));
+  </script>
+  <!-- end google analytics -->
+
+</head>
+
+<body class="tw-page-<%= dashed_file_name %>">
+
+
+

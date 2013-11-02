@@ -1,0 +1,10 @@
+
+/* webkit-min-device-pixel-ratio 1 is 96dpi */
+/* so this serves x2 images for ever screen larger than standard resolution */
+/* http://bjango.com/articles/min-device-pixel-ratio/ */
+
+@media screen and (-webkit-min-device-pixel-ratio: 1.1), (min-resolution: 100dpi) {
+
+
+
+}

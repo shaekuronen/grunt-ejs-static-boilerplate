@@ -1,0 +1,12 @@
+{
+
+  "home": {
+    "path_to_layout": "dev/templates/layouts/home.ejs",
+    "path_to_data": [
+      "dev/data/global.json",
+      {"dev/data/meta.json": "home"}
+    ]
+  }
+
+}
+
