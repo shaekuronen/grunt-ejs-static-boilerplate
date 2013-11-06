@@ -46,6 +46,30 @@
       "description": "Description goes here...",
       "image": "http://www.example.com/path/to/image.jpg"
     }
+  },
+
+  "about": {
+    "title": "About",
+    "description": "Description goes here...",
+    "keywords": "",
+    "facebook": {
+      "og_title": "Title",
+      "og_type": "website",
+      "og_url": "http://www.example.com",
+      "og_image": "http://www.example.com/path/to/image.jpg",
+      "og_site_name": "Example Site",
+      "og_app_id": "",
+      "og_description": "Description goes here..."
+    },
+    "twitter": {
+      "card_type": "summary",
+      "site": "@example",
+      "creator": "@example",
+      "url": "http://www.example.com",
+      "title": "Title",
+      "description": "Description goes here...",
+      "image": "http://www.example.com/path/to/image.jpg"
+    }
   }
 
 }

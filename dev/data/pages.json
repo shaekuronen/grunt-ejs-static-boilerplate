@@ -6,6 +6,14 @@
       "dev/data/global.json",
       {"dev/data/meta.json": "home"}
     ]
+  },
+
+  "about": {
+    "path_to_layout": "dev/templates/layouts/about.ejs",
+    "path_to_data": [
+      "dev/data/global.json",
+      {"dev/data/meta.json": "about"}
+    ]
   }
 
 }
