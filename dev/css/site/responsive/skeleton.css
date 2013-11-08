@@ -1,0 +1,155 @@
+/*
+* Skeleton V1.2
+* Copyright 2011, Dave Gamache
+* www.getskeleton.com
+* Free to use under the MIT license.
+* http://www.opensource.org/licenses/mit-license.php
+* 6/20/2012
+*/
+
+
+/* Table of Contents
+==================================================
+    # Default - 1200px
+    # 900 - 1199
+    # 600 - 899
+    # 0 - 599
+    # Clearing
+*/
+
+/* # 1200px+ (also fallback for devices that don't support @media-queries)
+================================================== */
+
+.container                                  { position: relative; width: 1200px; margin: 0 auto; padding: 0; }
+.container .column,
+.container .columns                         { float: left; display: inline; margin: 0; }
+.row                                        { margin-bottom: 20px; }
+
+.container .one.column,
+.container .one.columns                     { width: 100px;  }
+.container .two.columns                     { width: 200px; }
+.container .three.columns                   { width: 300px; }
+.container .four.columns                    { width: 400px; }
+.container .five.columns                    { width: 500px; }
+.container .six.columns                     { width: 600px; }
+.container .seven.columns                   { width: 700px; }
+.container .eight.columns                   { width: 800px; }
+.container .nine.columns                    { width: 900px; }
+.container .ten.columns                     { width: 1000px; }
+.container .eleven.columns                  { width: 1100px; }
+.container .twelve.columns                  { width: 1200px; }
+.container .one-third.column                { width: 33.3%; }
+.container .two-thirds.column               { width: 66.6%; }
+
+
+/* # 900 - 1199
+================================================== */
+
+@media only screen and (min-width: 900px) and (max-width: 1199px) {
+
+  .container                                  { width: 100%;}
+
+  .container .one.column,
+  .container .one.columns                     { width: 8.3333%;  }
+  .container .two.columns                     { width: 16.6666%; }
+  .container .three.columns                   { width: 25%; }
+  .container .four.columns                    { width: 33.3333%; }
+  .container .five.columns                    { width: 41.6666%; }
+  .container .six.columns                     { width: 50%; }
+  .container .seven.columns                   { width: 58.3333%; }
+  .container .eight.columns                   { width: 66.6666%; }
+  .container .nine.columns                    { width: 75%; }
+  .container .ten.columns                     { width: 83.3333%; }
+  .container .eleven.columns                  { width: 91.6666%; }
+  .container .twelve.columns                  { width: 100%; }
+  .container .one-third.column                { width: 33.3%; }
+  .container .two-thirds.column               { width: 66.6%; }
+
+}
+
+
+/* 600 - 899
+================================================== */
+
+@media only screen and (min-width: 600px) and (max-width: 899px) {
+
+  .container                                  { width: 100%;}
+
+  .container .one.column,
+  .container .one.columns                     { width: 8.3333%;  }
+  .container .two.columns                     { width: 16.6666%; }
+  .container .three.columns                   { width: 25%; }
+  .container .four.columns                    { width: 33.3333%; }
+  .container .five.columns                    { width: 41.6666%; }
+  .container .six.columns                     { width: 50%; }
+  .container .seven.columns                   { width: 58.3333%; }
+  .container .eight.columns                   { width: 66.6666%; }
+  .container .nine.columns                    { width: 75%; }
+  .container .ten.columns                     { width: 83.3333%; }
+  .container .eleven.columns                  { width: 91.6666%; }
+  .container .twelve.columns                  { width: 100%; }
+  .container .one-third.column                { width: 33.3%; }
+  .container .two-thirds.column               { width: 66.6%; }
+
+}
+
+/* 0 - 599
+================================================== */
+
+@media only screen and (max-width: 599px) {
+
+  .container { width: 100%; }
+
+  .container .one.column,
+  .container .one.columns,
+  .container .two.columns,
+  .container .three.columns,
+  .container .four.columns,
+  .container .five.columns,
+  .container .six.columns,
+  .container .seven.columns,
+  .container .eight.columns,
+  .container .nine.columns,
+  .container .ten.columns,
+  .container .eleven.columns,
+  .container .twelve.columns,
+  .container .one-third.column,
+  .container .two-thirds.column  { width: 100%; }
+
+}
+
+
+/* #Clearing
+================================================== */
+
+/* Self Clearing Goodness */
+.container:after { content: "\0020"; display: block; height: 0; clear: both; visibility: hidden; }
+
+/* Use clearfix class on parent to clear nested columns,
+or wrap each row of columns in a <div class="row"> */
+.clearfix:before,
+.clearfix:after,
+.row:before,
+.row:after {
+  content: '\0020';
+  display: block;
+  overflow: hidden;
+  visibility: hidden;
+  width: 0;
+  height: 0; }
+.row:after,
+.clearfix:after {
+  clear: both; }
+.row,
+.clearfix {
+  zoom: 1; }
+
+/* You can also use a <br class="clear" /> to clear columns */
+.clear {
+  clear: both;
+  display: block;
+  overflow: hidden;
+  visibility: hidden;
+  width: 0;
+  height: 0;
+}
