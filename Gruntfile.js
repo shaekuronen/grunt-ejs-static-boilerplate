@@ -61,6 +61,7 @@ module.exports = function(grunt) {
         options: {
           dest: 'preview',
           path_to_data: 'dev/data/pages.json',
+          path_to_layouts: 'dev/templates/layouts',
           index_page: 'home',
           parent_dirs: true,
           underscores_to_dashes: true,
@@ -71,6 +72,7 @@ module.exports = function(grunt) {
         options: {
           dest: 'production',
           path_to_data: 'dev/data/pages.json',
+          path_to_layouts: 'production/templates/layouts',
           index_page: 'home',
           parent_dirs: true,
           underscores_to_dashes: true,
@@ -79,7 +81,7 @@ module.exports = function(grunt) {
       }
     },
 
-    // get the scripts inside scripts.ejs and head.ejs build:js blocks
+    // get the css and js inside scripts.ejs and head.ejs build:js blocks
     'useminPrepare': {
       html: [
         'production/head.ejs',
@@ -90,8 +92,8 @@ module.exports = function(grunt) {
     // update the scripts links to point to the concatenated and minified js/main.js
     usemin: {
       html: [
-        'production/templates/global/head.ejs',
-        'production/templates/global/scripts.ejs'
+        'production/templates/components/global/head.ejs',
+        'production/templates/components/global/scripts.ejs'
       ]
     },
 
@@ -132,7 +134,6 @@ module.exports = function(grunt) {
         files: [
           {expand: true, flatten: true, cwd: 'dev/', src: ['templates/components/global/head.ejs'], dest: 'production/', filter: 'isFile'},
           {expand: true, flatten: true, cwd: 'dev/', src: ['templates/components/global/scripts.ejs'], dest: 'production/', filter: 'isFile'},
-          {expand: true, cwd: 'dev/', src: ['pages/**'], dest: 'production/'},
           {expand: true, cwd: 'dev/', src: ['templates/**'], dest: 'production/'},
           {expand: true, cwd: 'dev/', src: ['js/**'], dest: 'production/'},
           {expand: true, cwd: 'dev/', src: ['css/**'], dest: 'production/'},
@@ -277,7 +278,7 @@ module.exports = function(grunt) {
     'rev',
     'usemin',
     'ejs_static:optimize',
-    'copy:optimize',
+    // 'copy:optimize',
     'clean:post_optimize',
     'imagemin',
     'connect:optimize'
