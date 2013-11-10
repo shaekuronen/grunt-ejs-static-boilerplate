@@ -218,15 +218,12 @@ module.exports = function(grunt) {
 
     imagemin: {
       production: {
-        options: {
-          optimizationLevel: 1
-        },
-        files: [ {
+        files: [{
           expand: true,
           cwd: 'production/img/',
-          src:'**/*',
+          src: ['**/*.{png,jpg,gif}'],
           dest: 'production/img/'
-        } ]
+        }]
       }
     }
 
