@@ -81,31 +81,6 @@ module.exports = function(grunt) {
       }
     },
 
-    // get the css and js inside scripts.ejs and head.ejs build:js blocks
-    'useminPrepare': {
-      html: [
-        'production/head.ejs',
-        'production/scripts.ejs'
-      ]
-    },
-
-    // update the scripts links to point to the concatenated and minified js/main.js
-    usemin: {
-      html: [
-        'production/templates/components/global/head.ejs',
-        'production/templates/components/global/scripts.ejs'
-      ]
-    },
-
-    rev: {
-      files: {
-        src: [
-          'production/js/main.js',
-          'production/css/main.css'
-        ]
-      }
-    },
-
     copy: {
       preview: {
         files: [
@@ -132,8 +107,6 @@ module.exports = function(grunt) {
       },
       optimize: {
         files: [
-          {expand: true, flatten: true, cwd: 'dev/', src: ['templates/components/global/head.ejs'], dest: 'production/', filter: 'isFile'},
-          {expand: true, flatten: true, cwd: 'dev/', src: ['templates/components/global/scripts.ejs'], dest: 'production/', filter: 'isFile'},
           {expand: true, cwd: 'dev/', src: ['templates/**'], dest: 'production/'},
           {expand: true, cwd: 'dev/', src: ['js/**'], dest: 'production/'},
           {expand: true, cwd: 'dev/', src: ['css/**'], dest: 'production/'},
@@ -143,6 +116,31 @@ module.exports = function(grunt) {
           {expand: true, cwd: 'dev/', src: ['robots.txt'], dest: 'production/'},
           {expand: true, cwd: 'dev/', src: ['js/vendor/modernizr.custom.js'], dest: 'production/'},
           {expand: true, flatten: true, cwd: 'dev/', src: ['css/fonts/**'], dest: 'production/fonts/', filter: 'isFile'}
+        ]
+      }
+    },
+
+    // get the css and js inside scripts.ejs and head.ejs build:js blocks
+    'useminPrepare': {
+      html: [
+        'production/templates/components/global/head.ejs',
+        'production/templates/components/global/scripts.ejs'
+      ]
+    },
+
+    // update the scripts links to point to the concatenated and minified js/main.js
+    usemin: {
+      html: [
+        'production/templates/components/global/head.ejs',
+        'production/templates/components/global/scripts.ejs'
+      ]
+    },
+
+    rev: {
+      files: {
+        src: [
+          'production/js/main.js',
+          'production/css/main.css'
         ]
       }
     },
