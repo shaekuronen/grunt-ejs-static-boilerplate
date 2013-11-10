@@ -276,7 +276,6 @@ module.exports = function(grunt) {
     'rev',
     'usemin',
     'ejs_static:optimize',
-    // 'copy:optimize',
     'clean:post_optimize',
     'imagemin',
     'connect:optimize'
