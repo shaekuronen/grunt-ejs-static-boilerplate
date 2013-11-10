@@ -107,6 +107,9 @@ module.exports = function(grunt) {
       },
       optimize: {
         files: [
+          {expand: true, flatten: true, cwd: 'dev/', src: ['templates/components/global/head.ejs'], dest: 'production/', filter: 'isFile'},
+          {expand: true, flatten: true, cwd: 'dev/', src: ['templates/components/global/scripts.ejs'], dest: 'production/', filter: 'isFile'},
+          {expand: true, cwd: 'dev/', src: ['pages/**'], dest: 'production/'},
           {expand: true, cwd: 'dev/', src: ['templates/**'], dest: 'production/'},
           {expand: true, cwd: 'dev/', src: ['js/**'], dest: 'production/'},
           {expand: true, cwd: 'dev/', src: ['css/**'], dest: 'production/'},
@@ -120,11 +123,11 @@ module.exports = function(grunt) {
       }
     },
 
-    // get the css and js inside scripts.ejs and head.ejs build:js blocks
+    // get the scripts inside scripts.ejs and head.ejs build:js blocks
     'useminPrepare': {
       html: [
-        'production/templates/components/global/head.ejs',
-        'production/templates/components/global/scripts.ejs'
+        'production/head.ejs',
+        'production/scripts.ejs'
       ]
     },
 
