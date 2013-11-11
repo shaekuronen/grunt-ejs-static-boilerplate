@@ -1,7 +1,7 @@
 {
 
   "home": {
-    "path_to_layout": "dev/templates/layouts/home.ejs",
+    "layout": "home",
     "path_to_data": [
       "dev/data/global.json",
       {"dev/data/meta.json": "home"}
@@ -9,10 +9,30 @@
   },
 
   "about": {
-    "path_to_layout": "dev/templates/layouts/about.ejs",
+    "layout": "about",
     "path_to_data": [
       "dev/data/global.json",
       {"dev/data/meta.json": "about"}
+    ]
+  },
+
+  "project1": {
+    "category": "work",
+    "layout": "project",
+    "path_to_data": [
+      "dev/data/global.json",
+      {"dev/data/meta.json": "project1"},
+      {"dev/data/projects.json": "project1"}
+    ]
+  },
+
+  "project2": {
+    "category": "work",
+    "layout": "project",
+    "path_to_data": [
+      "dev/data/global.json",
+      {"dev/data/meta.json": "project2"},
+      {"dev/data/projects.json": "project2"}
     ]
   }
 
