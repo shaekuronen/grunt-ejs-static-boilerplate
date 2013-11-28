@@ -1,6 +1,4 @@
 
-var pages = require('./dev/data/pages.json');
-
 /*global module:false*/
 module.exports = function(grunt) {
 
