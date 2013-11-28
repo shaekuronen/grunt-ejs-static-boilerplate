@@ -38,7 +38,6 @@ module.exports = function(grunt) {
       },
       post_optimize: {
         src: [
-          'production/pages/',
           'production/templates/',
           'production/scripts.ejs',
           'production/head.ejs'
@@ -78,21 +77,6 @@ module.exports = function(grunt) {
           {expand: true, cwd: 'dev/', src: ['css/**'], dest: 'preview/'},
           {expand: true, cwd: 'dev/', src: ['js/**'], dest: 'preview/'},
           {expand: true, cwd: 'dev/', src: ['.ht*'], dest: 'preview/'}
-        ]
-      },
-      img: {
-        files: [
-          {expand: true, cwd: 'dev/', src: ['img/**'], dest: 'preview/'}
-        ]
-      },
-      css: {
-        files: [
-          {expand: true, cwd: 'dev/', src: ['css/**'], dest: 'preview/'}
-        ]
-      },
-      js: {
-        files: [
-          {expand: true, cwd: 'dev/', src: ['js/**'], dest: 'preview/'}
         ]
       },
       optimize: {
