@@ -107,17 +107,9 @@ module.exports = function(grunt) {
       },
       optimize: {
         files: [
+          {expand: true, cwd: 'dev/', src: ['**'], dest: 'production/'},
           {expand: true, flatten: true, cwd: 'dev/', src: ['templates/components/global/head.ejs'], dest: 'production/', filter: 'isFile'},
           {expand: true, flatten: true, cwd: 'dev/', src: ['templates/components/global/scripts.ejs'], dest: 'production/', filter: 'isFile'},
-          {expand: true, cwd: 'dev/', src: ['pages/**'], dest: 'production/'},
-          {expand: true, cwd: 'dev/', src: ['templates/**'], dest: 'production/'},
-          {expand: true, cwd: 'dev/', src: ['js/**'], dest: 'production/'},
-          {expand: true, cwd: 'dev/', src: ['css/**'], dest: 'production/'},
-          {expand: true, cwd: 'dev/', src: ['img/**'], dest: 'production/'},
-          {expand: true, cwd: 'dev/', src: ['data/**'], dest: 'production/'},
-          {expand: true, cwd: 'dev/', src: ['.ht*'], dest: 'production/'},
-          {expand: true, cwd: 'dev/', src: ['robots.txt'], dest: 'production/'},
-          {expand: true, cwd: 'dev/', src: ['js/vendor/modernizr.custom.js'], dest: 'production/'},
           {expand: true, flatten: true, cwd: 'dev/', src: ['css/fonts/**'], dest: 'production/fonts/', filter: 'isFile'}
         ]
       }
