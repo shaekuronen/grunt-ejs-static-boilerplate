@@ -100,7 +100,17 @@ module.exports = function(grunt) {
       html: [
         'production/templates/components/global/head.ejs',
         'production/templates/components/global/scripts.ejs'
-      ]
+      ],
+      options: {
+        dest: 'production'
+      }
+      // ,
+      // options: {
+      //   assetDirs: [
+      //     'production/index.html',
+      //     'production/about'
+      //   ]
+      // }
     },
 
     rev: {
@@ -204,8 +214,9 @@ module.exports = function(grunt) {
       'usemin',
       'ejs_static:optimize',
       'clean:post_optimize',
-      'imagemin',
-      'connect:optimize'
+      'imagemin'
+      // ,
+      // 'connect:optimize'
     );
 
   });
