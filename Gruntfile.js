@@ -16,35 +16,25 @@ module.exports = function(grunt) {
       preview: {
         options: {
           port: 9000,
-          keepalive: true,
-          base: './preview'
+          base: 'preview'
         }
       },
       optimize: {
         options: {
           port: 9001,
           keepalive: true,
-          base: './production'
+          base: 'production'
         }
       }
     },
 
     // delete everything from preview or production directories before optimize task
     clean: {
-      optimize: {
-        src: 'production/'
-      },
       preview: {
         src: 'preview/'
       },
-      preview_css: {
-        src: 'preview/css/'
-      },
-      preview_js: {
-        src: 'preview/js/'
-      },
-      preview_img: {
-        src: 'preview/img/'
+      pre_optimize: {
+        src: 'production/'
       },
       post_optimize: {
         src: [
@@ -141,61 +131,15 @@ module.exports = function(grunt) {
     },
 
     watch: {
-      css: {
-        files: 'dev/css/**/*.css',
-        tasks: ['refresh_css'],
-        options: {
-          debounceDelay: 250,
-          livereload: true
-        },
-      },
-      js: {
-        files: 'dev/js/**/*.js',
-        tasks: ['refresh_js'],
-        options: {
-          debounceDelay: 250,
-          livereload: true
-        },
-      },
-      // was getting Warning: EMFILE, too many open files
-      // img: {
-      //   files: 'dev/img/**/*',
-      //   tasks: ['refresh_img'],
-      //   options: {
-      //     debounceDelay: 250,
-      //     livereload: true
-      //   },
-      // },
-      pages: {
-        files: 'dev/pages/**/*',
+      preview: {
+        files: 'dev/**',
         tasks: ['preview'],
         options: {
           debounceDelay: 250,
-          livereload: true
+          livereload: true,
+          spawn: false
         },
       },
-      templates: {
-        files: 'dev/templates/**/*',
-        tasks: ['preview'],
-        options: {
-          debounceDelay: 250,
-          livereload: true
-        },
-      },
-      data: {
-        files: 'dev/data/**/*',
-        tasks: ['preview'],
-        options: {
-          debounceDelay: 250,
-          livereload: true
-        },
-      },
-    },
-
-    exec: {
-      start_server: {
-        command: 'grunt connect:preview &'
-      }
     },
 
     jshint: {
@@ -221,57 +165,68 @@ module.exports = function(grunt) {
 
   });
 
-  // these plugins provide necessary tasks
-  grunt.loadNpmTasks('grunt-usemin');
-  grunt.loadNpmTasks('grunt-rev');
-  grunt.loadNpmTasks('grunt-contrib-clean');
-  grunt.loadNpmTasks('grunt-contrib-cssmin');
-  grunt.loadNpmTasks('grunt-contrib-concat');
-  grunt.loadNpmTasks('grunt-contrib-uglify');
-  grunt.loadNpmTasks('grunt-contrib-connect');
-  grunt.loadNpmTasks('grunt-contrib-copy');
-  grunt.loadNpmTasks('grunt-contrib-imagemin');
-  grunt.loadNpmTasks('grunt-ejs-static');
-  grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-exec');
-  grunt.loadNpmTasks('grunt-contrib-jshint');
 
   // DEVELOPMENT
+  // discussion @ https://github.com/gruntjs/grunt/issues/975
+
   // preview the site during development
-  grunt.registerTask('preview', [
-    'clean:preview',
-    'copy:preview',
-    'ejs_static:preview',
-    'exec',
-    'watch'
-  ]);
+  grunt.registerTask('preview', [], function () {
 
-  // refresh the preview css
-  grunt.registerTask('refresh_css', ['clean:preview_css', 'copy:css' ]);
+    // load plugins for preview task
+    grunt.loadNpmTasks('grunt-contrib-clean');
+    grunt.loadNpmTasks('grunt-contrib-copy');
+    grunt.loadNpmTasks('grunt-ejs-static');
+    grunt.loadNpmTasks('grunt-exec');
+    grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-contrib-connect');
 
-  // refresh the preview js
-  grunt.registerTask('refresh_js', ['clean:preview_js', 'copy:js' ]);
+    // execute the task
+    grunt.task.run(
+      'clean:preview',
+      'copy:preview',
+      'ejs_static:preview',
+      'connect:preview',
+      'watch'
+    );
 
-  // refresh the preview img
-  grunt.registerTask('refresh_img', ['clean:preview_img', 'copy:img' ]);
+  });
+  // end preview the site during development
   // END DEVELOPEMENT
 
-  // DEPLOYMENT
+  // OPTIMIZE
   // optimize the site for deployment
-  grunt.registerTask('optimize', [
-    'clean:optimize',
-    'copy:optimize',
-    'useminPrepare',
-    'concat',
-    'cssmin',
-    'uglify',
-    'rev',
-    'usemin',
-    'ejs_static:optimize',
-    'clean:post_optimize',
-    'imagemin',
-    'connect:optimize'
-  ]);
-  // END DEPLOYMENT
+  grunt.registerTask('optimize', [], function () {
+
+    // load plugins for optimize task
+    grunt.loadNpmTasks('grunt-usemin');
+    grunt.loadNpmTasks('grunt-rev');
+    grunt.loadNpmTasks('grunt-contrib-clean');
+    grunt.loadNpmTasks('grunt-contrib-cssmin');
+    grunt.loadNpmTasks('grunt-contrib-concat');
+    grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-contrib-connect');
+    grunt.loadNpmTasks('grunt-contrib-copy');
+    grunt.loadNpmTasks('grunt-contrib-imagemin');
+    grunt.loadNpmTasks('grunt-ejs-static');
+    grunt.loadNpmTasks('grunt-contrib-jshint');
+
+    // execute the task
+    grunt.task.run(
+      'clean:pre_optimize',
+      'copy:optimize',
+      'useminPrepare',
+      'concat',
+      'cssmin',
+      'uglify',
+      'rev',
+      'usemin',
+      'ejs_static:optimize',
+      'clean:post_optimize',
+      'imagemin',
+      'connect:optimize'
+    );
+
+  });
+  // END OPTIMIZE
 
 };
