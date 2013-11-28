@@ -26,7 +26,7 @@ module.exports = function(grunt) {
       }
     },
 
-    // delete everything from preview or production directories before optimize task
+    // delete everything from preview or production directories before preview or optimize task
     clean: {
       preview: {
         src: 'preview/'
@@ -80,8 +80,6 @@ module.exports = function(grunt) {
       optimize: {
         files: [
           {expand: true, cwd: 'dev/', src: ['**'], dest: 'production/'},
-          {expand: true, flatten: true, cwd: 'dev/', src: ['templates/components/global/head.ejs'], dest: 'production/', filter: 'isFile'},
-          {expand: true, flatten: true, cwd: 'dev/', src: ['templates/components/global/scripts.ejs'], dest: 'production/', filter: 'isFile'},
           {expand: true, flatten: true, cwd: 'dev/', src: ['css/fonts/**'], dest: 'production/fonts/', filter: 'isFile'}
         ]
       }
@@ -90,9 +88,13 @@ module.exports = function(grunt) {
     // get the scripts inside scripts.ejs and head.ejs build:js blocks
     'useminPrepare': {
       html: [
-        'production/head.ejs',
-        'production/scripts.ejs'
-      ]
+        'production/templates/components/global/head.ejs',
+        'production/templates/components/global/scripts.ejs'
+      ],
+      options: {
+        dest: 'production',
+        root: 'production'
+      }
     },
 
     // update the scripts links to point to the concatenated and minified js/main.js
@@ -102,18 +104,12 @@ module.exports = function(grunt) {
         'production/templates/components/global/scripts.ejs'
       ],
       options: {
-        dest: 'production'
+        // this is necessary so that usemin can find the revved css and js files
+        assetsDirs: ['production']
       }
-      // ,
-      // options: {
-      //   assetDirs: [
-      //     'production/index.html',
-      //     'production/about'
-      //   ]
-      // }
     },
 
-    rev: {
+    filerev: {
       files: {
         src: [
           'production/js/main.js',
@@ -192,6 +188,7 @@ module.exports = function(grunt) {
     // load plugins for optimize task
     grunt.loadNpmTasks('grunt-usemin');
     grunt.loadNpmTasks('grunt-rev');
+    grunt.loadNpmTasks('grunt-filerev');
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-concat');
@@ -210,13 +207,12 @@ module.exports = function(grunt) {
       'concat',
       'cssmin',
       'uglify',
-      'rev',
+      'filerev',
       'usemin',
       'ejs_static:optimize',
       'clean:post_optimize',
-      'imagemin'
-      // ,
-      // 'connect:optimize'
+      'imagemin',
+      'connect:optimize'
     );
 
   });
