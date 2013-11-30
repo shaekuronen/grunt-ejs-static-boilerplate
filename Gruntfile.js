@@ -122,7 +122,7 @@ module.exports = function(grunt) {
     watch: {
       preview: {
         files: 'dev/**',
-        tasks: ['preview'],
+        tasks: ['refresh_preview'],
         options: {
           debounceDelay: 250,
           livereload: true,
@@ -185,6 +185,7 @@ module.exports = function(grunt) {
   // END JSHINT
 
   // DEVELOPMENT
+  //
   // preview the site during development
   grunt.registerTask('preview', [], function () {
 
@@ -208,9 +209,27 @@ module.exports = function(grunt) {
 
   });
   // end preview the site during development
+
+  // refresh preview site when files change
+  grunt.registerTask('refresh_preview', [], function () {
+
+    // load plugins for preview task
+    grunt.loadNpmTasks('grunt-contrib-copy');
+    grunt.loadNpmTasks('grunt-ejs-static');
+
+    // execute the task
+    grunt.task.run(
+      'copy:preview',
+      'ejs_static:preview'
+    );
+
+  });
+  // end refresh preview site when files change
+  //
   // END DEVELOPEMENT
 
   // OPTIMIZE
+  //
   // optimize the site for deployment
   grunt.registerTask('optimize', [], function () {
 
