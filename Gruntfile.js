@@ -119,9 +119,67 @@ module.exports = function(grunt) {
       }
     },
 
+    // watch: {
+    //   preview: {
+    //     files: 'dev/**',
+    //     tasks: ['refresh_preview'],
+    //     options: {
+    //       debounceDelay: 250,
+    //       livereload: true,
+    //       spawn: false
+    //     },
+    //   },
+    // },
+
     watch: {
-      preview: {
-        files: 'dev/**',
+      css: {
+        files: 'dev/css/**',
+        tasks: ['refresh_css'],
+        options: {
+          debounceDelay: 250,
+          livereload: true,
+          spawn: false
+        },
+      },
+      js: {
+        files: 'dev/js/**',
+        tasks: ['refresh_js'],
+        options: {
+          debounceDelay: 250,
+          livereload: true,
+          spawn: false
+        },
+      },
+      // img: {
+      //   files: 'dev/img/**',
+      //   tasks: ['refresh_preview'],
+      //   options: {
+      //     debounceDelay: 250,
+      //     livereload: true,
+      //     spawn: false
+      //   },
+      // },
+      // templates: {
+      //   files: 'dev/templates/**',
+      //   tasks: ['refresh_preview'],
+      //   options: {
+      //     debounceDelay: 250,
+      //     livereload: true,
+      //     spawn: false
+      //   },
+      // },
+      // data: {
+      //   files: 'dev/data/**',
+      //   tasks: ['refresh_preview'],
+      //   options: {
+      //     debounceDelay: 250,
+      //     livereload: true,
+      //     spawn: false
+      //   },
+      // },
+      // this matches any files in root dir like .htaccess, robots.txt, etc
+      everything_else: {
+        files: 'dev/!(css|js)/**',
         tasks: ['refresh_preview'],
         options: {
           debounceDelay: 250,
@@ -199,6 +257,7 @@ module.exports = function(grunt) {
 
     // execute the task
     grunt.task.run(
+      'jshint',
       'clean:preview',
       'modernizr',
       'copy:preview',
@@ -211,19 +270,20 @@ module.exports = function(grunt) {
   // end preview the site during development
 
   // refresh preview site when files change
-  grunt.registerTask('refresh_preview', [], function () {
-
-    // load plugins for preview task
-    grunt.loadNpmTasks('grunt-contrib-copy');
-    grunt.loadNpmTasks('grunt-ejs-static');
-
-    // execute the task
-    grunt.task.run(
-      'copy:preview',
-      'ejs_static:preview'
-    );
-
-  });
+  // necessary tasks are still loaded because of running grunt process (watch), so no need to load plugins
+  grunt.registerTask('refresh_css', [
+    'copy:preview',
+    'ejs_static:preview'
+  ]);
+  grunt.registerTask('refresh_js', [
+    'jshint',
+    'copy:preview',
+    'ejs_static:preview'
+  ]);
+  grunt.registerTask('refresh_preview', [
+    'copy:preview',
+    'ejs_static:preview'
+  ]);
   // end refresh preview site when files change
   //
   // END DEVELOPEMENT
@@ -249,6 +309,7 @@ module.exports = function(grunt) {
 
     // execute the task
     grunt.task.run(
+      'jshint',
       'clean:pre_optimize',
       'modernizr',
       'copy:optimize',
