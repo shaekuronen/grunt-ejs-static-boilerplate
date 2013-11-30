@@ -15,6 +15,8 @@ module.exports = function(grunt) {
         options: {
           port: 9000,
           base: 'preview'
+          // ,
+          // livereload: true
         }
       },
       optimize: {
@@ -113,6 +115,7 @@ module.exports = function(grunt) {
       files: {
         src: [
           'production/js/main.js',
+          'production/js/vendor/modernizr_custom.js',
           'production/css/main.css'
         ]
       }
@@ -149,28 +152,56 @@ module.exports = function(grunt) {
           dest: 'production/img/'
         }]
       }
+    },
+
+    modernizr: {
+      "devFile" : "remote",
+      "outputFile" : "dev/js/vendor/modernizr_custom.js",
+      // add feature tests here
+      "extra" : {
+        "shiv" : true,
+        "load" : true,
+        "cssclasses" : true,
+        "cssanimations": true
+      },
+      "uglify" : true,
+      "parseFiles" : false
     }
 
   });
 
+  // discussion @ https://github.com/gruntjs/grunt/issues/975
+  //
+  // JSHINT
+  grunt.registerTask('jshint', [], function () {
+
+    // load plugins for jshint task
+    grunt.loadNpmTasks('grunt-contrib-jshint');
+
+    // execute the task
+    grunt.task.run(
+      'jshint'
+    );
+
+  });
+  // END JSHINT
 
   // DEVELOPMENT
-  // discussion @ https://github.com/gruntjs/grunt/issues/975
-
   // preview the site during development
   grunt.registerTask('preview', [], function () {
 
     // load plugins for preview task
     grunt.loadNpmTasks('grunt-contrib-clean');
+    grunt.loadNpmTasks("grunt-modernizr");
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-ejs-static');
-    grunt.loadNpmTasks('grunt-exec');
-    grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-connect');
+    grunt.loadNpmTasks('grunt-contrib-watch');
 
     // execute the task
     grunt.task.run(
       'clean:preview',
+      'modernizr',
       'copy:preview',
       'ejs_static:preview',
       'connect:preview',
@@ -197,11 +228,13 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-imagemin');
     grunt.loadNpmTasks('grunt-ejs-static');
+    grunt.loadNpmTasks("grunt-modernizr");
     grunt.loadNpmTasks('grunt-contrib-jshint');
 
     // execute the task
     grunt.task.run(
       'clean:pre_optimize',
+      'modernizr',
       'copy:optimize',
       'useminPrepare',
       'concat',
