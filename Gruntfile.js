@@ -15,8 +15,6 @@ module.exports = function(grunt) {
         options: {
           port: 9000,
           base: 'preview'
-          // ,
-          // livereload: true
         }
       },
       optimize: {
@@ -218,7 +216,6 @@ module.exports = function(grunt) {
 
     // load plugins for optimize task
     grunt.loadNpmTasks('grunt-usemin');
-    grunt.loadNpmTasks('grunt-rev');
     grunt.loadNpmTasks('grunt-filerev');
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
