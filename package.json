@@ -15,7 +15,10 @@
     "grunt-contrib-concat": "~0.3.0",
     "grunt-contrib-cssmin": "~0.6.1",
     "grunt-contrib-uglify": "~0.2.2",
-    "grunt-contrib-jshint": "~0.7.1"
+    "grunt-contrib-jshint": "~0.7.1",
+    "grunt-sass": "~0.8.1",
+    "grunt-modernizr": "~0.4.1",
+    "grunt-autoprefixer": "~0.4.1"
   },
   "dependencies": {
     "time-grunt": "~0.2.0"
