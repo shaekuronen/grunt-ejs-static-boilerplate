@@ -1,0 +1,24 @@
+// SCUT LIST: PUNCTUATED
+// http://davidtheclark.github.io/scut/#list_punctuated
+
+// Depends on `list-unstyled`.
+
+@mixin scut-list-punctuated (
+  $divider: ", ",
+  $display: inline
+) {
+
+  @include scut-list-unstyled;
+
+  & > li {
+    display: $display;
+    &:not(:last-child):after {
+      content: $divider;
+    }
+  }
+
+}
+
+%scut-list-comma {
+  @include scut-list-punctuated;
+}

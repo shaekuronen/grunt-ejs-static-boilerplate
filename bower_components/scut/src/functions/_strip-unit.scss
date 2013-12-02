@@ -1,0 +1,10 @@
+// SCUT STRIP UNIT
+// http://davidtheclark.github.io/scut/#strip_unit
+
+@function scut-strip-unit (
+  $num
+) {
+
+  @return $num / ($num * 0 + 1);
+
+}

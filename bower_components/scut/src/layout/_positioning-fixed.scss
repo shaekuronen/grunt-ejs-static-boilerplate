@@ -1,0 +1,17 @@
+// SCUT POSITIONING: FIXED
+// http://davidtheclark.github.io/scut/#positioning_fixed
+
+// Depends on `positioning-coordinates`.
+
+@mixin scut-fixed (
+  $coordinates: 0 n n 0
+) {
+
+  position: fixed;
+  @include scut-coords($coordinates);
+
+}
+
+%scut-fixed {
+  @include scut-fixed;
+}

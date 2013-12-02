@@ -1,0 +1,11 @@
+// SCUT V-CENTER: LINE-HEIGHT
+// http://davidtheclark.github.io/scut/#v-center_line-height
+
+@mixin scut-vcenter-lh (
+  $height
+) {
+
+  height: $height;
+  line-height: $height;
+
+}

@@ -1,0 +1,20 @@
+// SCUT V-CENTER: TABLE DISPLAY
+// http://davidtheclark.github.io/scut/#v-center_table_display
+
+@mixin scut-vcenter-td (
+  $inner: ".scut-inner"
+) {
+
+  display: table;
+
+  & > #{$inner} {
+    display: table-cell;
+    vertical-align: middle;
+  }
+
+}
+
+
+%scut-vcenter-td {
+  @include scut-vcenter-td;
+}

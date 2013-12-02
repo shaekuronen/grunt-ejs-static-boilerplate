@@ -1,0 +1,26 @@
+// SCUT LIST: INLINE
+// http://davidtheclark.github.io/scut/#list_inline
+
+// Depends on `list-unstyled`.
+
+@mixin scut-list-inline (
+  $space: false
+) {
+
+  @include scut-list-unstyled;
+
+  & > li {
+    display: inline-block;
+  }
+
+  @if $space {
+    & > li + li {
+      margin-left: $space;
+    }
+  }
+
+}
+
+%scut-list-inline {
+  @include scut-list-inline;
+}
