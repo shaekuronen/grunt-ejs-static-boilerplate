@@ -1,5 +1,5 @@
 {
-  "name": "206_site",
+  "name": "project_name",
   "version": "0.1.0",
   "devDependencies": {
     "grunt": "~0.4.1",
