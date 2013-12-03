@@ -1,3 +1,6 @@
+
+-- Moved this project to a [Yeoman Generator](https://github.com/shaekuronen/generator-ejs-static)
+
 grunt-ejs-static-boilerplate
 ============================
 
